@@ -1,0 +1,52 @@
+Producing & Consuming messages
+
+
+Send some messages using Kafka Console Producer
+
+./bin/kafka-console-producer.sh --topic cities --boker-list localhost:9092 
+
+
+
+Consuming messages using Kafka Console Consume
+
+./bin/kafka-console-consume.sh --topic cities --bootstrap-server localhost:9092 
+
+
+
+Consuming messages from the beginning
+
+./bin/kafka-console-consume.sh --topic cities --bootstrap-server localhost:9092 -from-beginning //Have got all messages from the very first one
+
+-kafka cluster stores messages even if they were already consumed by one of the consumers
+-Same messages may be read multiple times by different consumers
+
+
+
+Running multiple consumers
+
+-Multiple consumers and multiple producers could exchange message via single centralized storage point - kafka cluster
+
+
+
+Running multiple producers
+
+-Producers & consumers don't know about each other
+-Producers & consumers may appear and disappear. 
+-It's job is to store messages and receive or send them on demand.
+
+
+
+What was changed in the Kafka logs 
+
+-/tmp/kafka-logs saves all messages. Use server.properties to configure that folder.
+
+-Kafka doesn't store all message forever & after specific amount of time(or when size of log exceeds max size) message are deleted. 
+-Dfault log retention period is 7 day (168 hours)
+-Message are saved in a log file in specific partition folder.
+-Every consumer must be part of the consumer group.
+-Every message inside of the topic has unique number called "offset"
+-First message ins each topic has offset 0
+-Consumers start reading messages starting from specific offset.
+
+
+ 
