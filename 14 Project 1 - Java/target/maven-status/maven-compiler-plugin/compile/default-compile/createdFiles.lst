@@ -1,0 +1,3 @@
+ConsumerWithAutoCommit.class
+ConsumerWithManualCommit.class
+ConsumerWithPartitionsAssignment.class
